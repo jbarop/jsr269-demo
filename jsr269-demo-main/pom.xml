@@ -1,0 +1,25 @@
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>de.barop.demos</groupId>
+    <artifactId>jsr269-demo-project</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>jsr269-demo-main</artifactId>
+  <packaging>jar</packaging>
+  <name>JSR-269 Demo - Main Program</name>
+  <description>Main program where you can use the generated code.</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>de.barop.demos</groupId>
+      <artifactId>jsr269-demo-processor</artifactId>
+    </dependency>
+  </dependencies>
+
+</project>

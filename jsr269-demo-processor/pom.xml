@@ -1,0 +1,49 @@
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>de.barop.demos</groupId>
+    <artifactId>jsr269-demo-project</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>jsr269-demo-processor</artifactId>
+  <packaging>jar</packaging>
+  <name>JSR-269 Demo - Annotation Processor</name>
+  <description>This module contains the annotation processor.</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.javassist</groupId>
+      <artifactId>javassist</artifactId>
+      <version>3.18.1-GA</version>
+    </dependency>
+  </dependencies>
+
+  <!--
+    Disable annotation processing for this module.
+
+    Workaround for http://jira.codehaus.org/browse/MCOMPILER-97
+
+    A service descriptor in `META-INF/services` is needed so that the compiler can pick up the processor.
+    Maven copies the resources (including our descriptor) before the compiler is run which causes the compiler
+    to look for the not yet compiled annotation processor.
+
+    The workaround is to disable the annotation processing for this module. This will only work, however, if
+    the module does not use any annotation processors defined in dependencies.
+  -->
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <compilerArgument>-proc:none</compilerArgument>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
